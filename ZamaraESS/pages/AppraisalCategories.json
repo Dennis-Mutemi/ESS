@@ -1,0 +1,72 @@
+{
+  "UserAppraisalCategory": [
+    {
+      "EmpNo": "E0010",
+      "FINANCE": "",
+      "PEOPLE": "",
+      "CAT07": "",
+      "CAT06": "",
+      "CAT01": ""
+    },
+    {
+      "EmpNo": "EMP11",
+      "CAT03": "",
+      "CAT04": ""
+    },
+    {
+      "EmpNo": "PM01",
+      "CAT02": "",
+      "CAT07": "",
+      "CAT04": "",
+      "CAT05": ""
+    },
+    {
+      "EmpNo": "PM06",
+      "CAT06": "",
+      "CAT02": ""
+    },
+    {
+      "EmpNo": "E0030",
+      "CAT02": "",
+      "CAT03": "",
+      "CAT04": ""
+    },
+    {
+      "EmpNo": "ZFBAS001",
+      "3": ""
+    }
+  ],
+  "UserAppraisalSection": [
+    {
+      "EmpNo": "EMP11",
+      "CAT03": "",
+      "CAT04": ""
+    },
+    {
+      "EmpNo": "E0010",
+      "CAT03": "",
+      "CAT01": ""
+    },
+    {
+      "EmpNo": "PM01",
+      "CAT01": "",
+      "CAT04": ""
+    },
+    {
+      "EmpNo": "PM06",
+      "CAT01": "",
+      "CAT03": "",
+      "CAT04": ""
+    },
+    {
+      "EmpNo": "E0030",
+      "CAT01": "",
+      "CAT03": "",
+      "CAT04": ""
+    },
+    {
+      "EmpNo": "ZFBAS001",
+      "3": ""
+    }
+  ]
+}

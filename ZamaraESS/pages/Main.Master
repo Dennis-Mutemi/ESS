@@ -1,0 +1,719 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="ZamaraESS.pages.Main" %>
+<!DOCTYPE html>
+<html>
+   <head runat="server">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Zamara - <%: Page.Title %> </title>
+      <link rel="shortcut icon" href="../images/logo.png" />
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!--These jQuery libraries for chosen need to be included-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+      <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css" />
+      <!--These jQuery libraries for select2
+         need to be included-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+      <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" />
+      <!--Data Tables-->
+      <%--<link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">--%>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css" />
+      <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/2.1.1/css/searchPanes.bootstrap5.min.css" />
+      <link rel="stylesheet" href="https://cdn.datatables.net/select/1.6.1/css/select.bootstrap5.min.css" />
+      <!-- Google Font: Source Sans Pro -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="../wwwroot/plugins/fontawesome-free/css/all.min.css">
+      <!-- Ionicons -->
+      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+      <!-- Tempusdominus Bootstrap 4 -->
+      <link rel="stylesheet" href="../wwwroot/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+      <!-- iCheck -->
+      <link rel="stylesheet" href="../wwwroot/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+      <!-- JQVMap -->
+      <link rel="stylesheet" href="../wwwroot/plugins/jqvmap/jqvmap.min.css">
+      <!-- Theme style -->
+      <link rel="stylesheet" href="../wwwroot/dist/css/adminlte.min.css">
+      <!-- overlayScrollbars -->
+      <link rel="stylesheet" href="../wwwroot/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+      <!-- Daterange picker -->
+      <link rel="stylesheet" href="../wwwroot/plugins/daterangepicker/daterangepicker.css">
+      <!-- summernote -->
+      <link rel="stylesheet" href="../wwwroot/plugins/summernote/summernote-bs4.min.css">
+      <link href="../wwwroot/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+      <style>
+         .m-0 {
+         font-family: 'Monotype Corsiva';
+         }
+         .col-sm-6 {
+         font-size: small;
+         }
+         .navbar {
+         transition: height 0.3s;
+         }
+         .employee-nav {  
+         display:flex;
+         align-items: center;
+         position: absolute;
+         width: 100%;
+         top: 47px; 
+         height: 120px;
+         transition: height 0.3s, top 0.3s;
+         background-color: #28a745 !important;
+         z-index: 1029;
+         padding: 0 15px;         
+         }
+         .employee-image {
+         width: 100px;
+         height: 100px;
+         border-radius: 50%;
+         transition: width 0.3s, height 0.3s;
+         position: absolute;
+         top: 95%;
+         transform: translateY(-50%);
+         z-index: 1;
+         background: white;
+         border: 2px solid #ddd;            
+         }
+         .employee-name {
+         margin-left: 120px;
+         font-weight: bold;
+         transition: margin-left 0.3s;
+         }
+         .navbar.scrolled .employee-image {
+         width: 40px;
+         height: 40px;
+         top: 50%;
+         }
+         .navbar.scrolled .employee-name {
+         margin-left: 60px;
+         }
+         .navbar.scrolled {
+         height: 70px;
+         }
+         .navbar-fixed {
+         position: fixed;
+         top: 56px; 
+         z-index: 1030;
+         }
+         .navbar-nav-center {
+         margin: 0 auto;
+         }
+         .navbarcontent{
+         display:flex;
+         margin-left:40px;            
+         }        
+         .employee-nav .navafterscroll  .employee-name{
+         margin-top:0.3em;            
+         }
+         .employee-nav .navafterscroll .navbarcontent{             
+         display:flex;
+         }
+         .employee-nav .beforescroll  .employee-name {
+         margin-top:0 !important;
+         margin-left:20em;
+         }
+         .main-sidebar {          
+         margin-top: 167px;           
+         background-color: darkgray;
+         z-index: 1028;
+         transition: margin-top 0.3s; 
+         }
+         .sidebar-content {
+         padding: 20px;
+         height: auto!important; 
+         }
+         .scrolled-up{
+         margin-top: 120px !important;
+         }
+         .modal.fullscreen-modal .modal-dialog {
+         max-width: 100%;
+         margin: 0;
+         height: 100vh;
+         display: flex;
+         align-items: center;
+         }
+         .modal.fullscreen-modal .modal-content {
+         width: 100%;
+         height: 100%;
+         border: none;
+         border-radius: 0;
+         display: flex;
+         flex-direction: column;
+         }
+         .modal.fullscreen-modal .modal-body {
+         flex-grow: 1;
+         overflow-y: auto;
+         }
+         .modal.fullscreen-modal .modal-header,
+         .modal.fullscreen-modal .modal-footer {
+         border: none;
+         }
+         .form-control,
+         .btn {
+         border-radius: 0 !important; 
+         }
+         .active{
+         background: black;
+         }
+         .dropdown:hover .dropdown-menu {
+         display: block;
+         color:black;
+         }      
+         .pagepostion {
+         margin-top:168px;
+         }
+         .cardposition{
+         margin-top:1em!important;
+         }
+         .dropdown-item:hover{
+         color:black!important;
+         }
+         .nav-item:hover{
+         color:white!important;
+         }
+         .calendar {
+         display: grid;
+         grid-template-columns: repeat(7, 1fr);
+         gap: 5px;
+         }
+         .calendar-day {
+         border: 1px solid #ddd;
+         padding: 10px;
+         height: 100px;
+         position: relative;
+         }
+         .calendar-day header {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         text-align: right;
+         padding: 5px;
+         background: rgba(255, 255, 255, 0.8);
+         }
+         .on-leave {
+         background-color: #ffcccc;
+         }
+         .highlight {
+         background-color: yellow;
+         }
+         .controls {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 10px;
+         }
+         .pagination-wrapper {
+         display: flex;
+         justify-content: flex-end;
+         margin-top: 10px;
+         }
+         .pagination .page-link {
+         color: #007bff;
+         }
+         .pagination .page-item.active .page-link {
+         z-index: 1;
+         color: #fff;
+         background-color: #007bff;
+         border-color: #007bff;
+         }
+      </style>
+      <link href="../Zebra_Datepicker-master/public/css/custom.css" rel="stylesheet" />
+      <link href="../Zebra_Datepicker-master/public/css/bootstrap.css" rel="stylesheet" />
+      <%--<link href="../Zebra_Datepicker-master/public/css/default.css" rel="stylesheet" />--%>
+      <script src="../Zebra_Datepicker-master/examples/public/javascript/jquery-1.12.0.js"></script>
+      <script src="../Zebra_Datepicker-master/public/javascript/zebra_datepicker.js"></script>
+      <script src="../Zebra_Datepicker-master/public/javascript/zebra_datepicker.src.js"></script>
+      <script type="text/javascript">
+          var $j = jQuery.noConflict();
+          $j(document).ready(function () {
+              var $zdp = $j('#Main2__dtRequiredDate').data('Zebra_DatePicker');
+              // assuming the controls you want to attach the plugin to 
+              // have the "datepicker" class set
+              $j('ctl00_Main2__datepicker').Zebra_DatePicker();
+
+          });
+      </script>
+   </head>
+   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+   <body class="hold-transition sidebar-mini layout-fixed">
+      <form id="form2" runat="server">
+         <nav class="navbar navbar-expand-lg fixed-top" style="height: 56px!important;background:#26284f!important;color:white!important;">
+            <a class="navbar-brand" href="#">
+            <img src="../images/logo.png" alt="Logo" height="50"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+               <ul class="navbar-nav">
+                  <li class="nav-item">
+                     <a class="nav-link" href="Home.aspx">Home</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link" href="Dashboard.aspx" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">My Profile</a>                             
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="" id="dropdownMenuLinkr" data-bs-toggle="dropdown" aria-expanded="false">Reports</a>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLinkr" style="background:#28a745!important; color:white!important;">
+                        <%--<li><a class="dropdown-item" href="pnineform.aspx">P9 Form</a></li>
+                           <li><a class="dropdown-item" href="Payslip.aspx">Payslip</a></li>--%>
+                        <li><a class="dropdown-item" href="GoalSettinForm.aspx">Goal Setting Form</a></li>
+                        <li><a  class="dropdown-item" href="InterimReviewForm.aspx">Interim Review Form</a></li>
+                        <li><a  class="dropdown-item" href="GoalSettingReport.aspx">Goal Setting Status</a></li>
+                        <li><a  class="dropdown-item" href="Midyearcheckinreport.aspx">Mid Year Check In</a></li>
+                        <li><a  class="dropdown-item" href="AnnualReviewReport.aspx">Annual Review</a></li>
+                        <li> <a class="dropdown-item" href="AppraisalSummary.aspx">Appraisal Summary</a></li>
+                     </ul>
+                  </li>
+               </ul>
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item p-1 mr-2" style="border-radius:80%!important;background:green!important;" id="company" runat="server"></li>
+                  <li class="nav-item dropdown" style="margin-right:0.5em!important; position:relative;">
+                     <asp:Image ID="logoutimage" class="profile-user-img img-responsive img-circle" 
+                        data-bs-toggle="dropdown" aria-expanded="false"
+                        runat="server" alt="User profile picture" style="width: 40px;height: 40px;border-radius:50%; z-index: 1000;"/>
+                     <i class="fa fa-caret-down"></i>
+                     <ul class="dropdown-menu" style="left: auto; transform: translateX(-50%); z-index: 2000!important;">
+                        <li>
+                           <a href="Changepassword.aspx" class="dropdown-item" style="color: black;">
+                           <span class="fas fa-key">&nbsp Change Password</span>
+                           </a>
+                        </li>
+                        <li>
+                           <asp:LinkButton class="dropdown-item" ID="lbtnLogOut" runat="server" OnClick="lbtnLogOut_Click" style="color: black;">
+                              <span class="fas fa-power-off">&nbsp Sign out</span>
+                           </asp:LinkButton>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+         <nav class="navbar navbar-expand-lg employee-nav" style="color:white;">
+            <asp:Image ID="ImgProfilePic" class="profile-user-img img-responsive img-circle" runat="server" alt="User profile picture"  CssClass="employee-image"/>
+            <h6 class="employee-name" id="empname" runat="server">Employee Name</h6>
+            <br />                
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdow" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdow" style="margin-left: 4em!important;" runat="server">
+               <ul class="navbar-nav navbar-nav-center">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="Dashboard.aspx">Personal</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="PurchaseReqListing.aspx" id="dropdownMenuLinkRe" data-bs-toggle="dropdown" aria-expanded="false">Requisition Mgt</a>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLinkRe" style="background:#26284f!important; color:white!important;">
+                        <li><a class="dropdown-item" href="PurchaseReqListing.aspx">Purchase Requisition</a></li>
+                        <li><a class="dropdown-item" href="ImprestListing.aspx">Imprest Requisition</a></li>
+                        <li><a class="dropdown-item" href="SurrenderListing.aspx">Imprest Surrender</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="LeaveListing.aspx" id="dropdownMenuLinkl" data-bs-toggle="dropdown" aria-expanded="false">Leave Mgt</a>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLinkl" style="background:#26284f!important; color:white!important;">
+                        <li><a class="dropdown-item" href="LeaveListing.aspx">Leave Application</a></li>
+                        <li><a class="dropdown-item" href="LeaveSchedules.aspx">Leave Schedule</a></li>
+                        <li><a class="dropdown-item" href="LeaveBalances.aspx">Leave Balances</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="AppraisalListing.aspx?status=New" id="dropdownMenuLinkp" data-bs-toggle="dropdown" aria-expanded="false">Performance Mgt</a>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLinkp" style="background:#26284f!important; color:white!important;">
+                        <li><a class="dropdown-item" href="AppraisalListing.aspx?status=New">New Appraisal</a></li>
+                        <li><a class="dropdown-item" href="AppraisalListing.aspx?status=Submitted">Submitted</a></li>
+                        <li><a class="dropdown-item" href="AppraisalListing.aspx?status=Mid Year Review">Mid Year Review</a></li>
+                        <li><a class="dropdown-item" href="AppraisalListing.aspx?status=Mid Year submitted">Mid Year Submitted</a></li>
+                        <li><a class="dropdown-item" href="AppraisalListing.aspx?status=Mid Year Closed">Mid Year Closed</a></li>
+                        <li><a class="dropdown-item" href="AppraisalListing.aspx?status=End Year Review">End Year Review</a></li>
+                        <li><a class="dropdown-item" href="AppraisalListing.aspx?status=End Year Submitted">End Year Submitted</a></li>
+                        <li><a class="dropdown-item" href="AppraisalListing.aspx?status=End Year Closed">End Year Closed</a></li>
+                        <li><a class="dropdown-item" href="AppraisalListing.aspx?status=Moderation">Moderation</a></li>
+                        <li><a class="dropdown-item" href="AppraisalListing.aspx?status=Completed">Completed</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="IncidentListing.aspx?ty=in" id="dropdownMenuLinkh" data-bs-toggle="dropdown" aria-expanded="false">Health & Safety Mgt</a>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLinkh" style="background:#26284f!important; color:white!important;">
+                        <li><a class="dropdown-item" href="IncidentListing.aspx?ty=in">Incident</a></li>
+                        <li><a class="dropdown-item" href="IncidentListing.aspx?ty=ac">Accident</a></li>
+                        <li><a class="dropdown-item" href="IncidentListing.aspx?ty=od">Occupational Disease</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="CaseListing.aspx?" id="dropdownMenuLinkd" data-bs-toggle="dropdown" aria-expanded="false">Disciplinary Mgt</a>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLinkd" style="background:#26284f!important; color:white!important;">
+                        <li><a class="dropdown-item" href="CaseListing.aspx?status=New">New Case</a></li>
+                        <li><a class="dropdown-item" href="CaseListing.aspx?status=Submitted">Submitted</a></li>
+                        <li><a class="dropdown-item" href="CaseListing.aspx?status=Show Cause">Show Cause</a></li>
+                        <li><a class="dropdown-item" href="CaseListing.aspx?status=Show Cause Response">Show Cause Response</a></li>
+                        <li><a class="dropdown-item" href="CaseListing.aspx?status=Ongoing">Ongoing</a></li>
+                        <li><a class="dropdown-item" href="CaseListing.aspx?status=Closed">Closed</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="GrievanceListing.aspx?ty=in" id="dropdownMenuLinkg" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLinkg" style="background:#26284f!important; color:white!important;">
+                        <li><a class="dropdown-item" href="GrievanceListing.aspx">Reported Grievances</a></li>
+                        <li><a class="dropdown-item" href="GrievanceCase.aspx">Personal Grievances</a></li>
+                        <li><a class="dropdown-item" href="Exit.aspx">Exit Application</a></li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+         <!-- /.navbar -->
+         <!-- Main Sidebar Container -->
+         <aside class="main-sidebar text-center" runat="server" id="sidebarmenu">
+            <div class="sidebar-content" style="margin-top:1em!important;">
+               <!-- Sidebar content here -->
+               <div class="row">
+                  <div class="col-12">
+                     <div style="display: block!important;">
+                        <h6 style="font-weight:bold!important;">Phone</h6>
+                        <div style="margin-top: -0.7em!important;"> <p id="pphone" runat="server"></p> </div>
+                     </div>
+                     <div style="display: block!important;margin-top: -0.6em!important;">
+                        <h6 style="font-weight:bold!important;">Email</h6>                       
+                         <div style="margin-top: -0.7em!important;"> <p id="email" runat="server" style="font-size:0.9em!important;"></p></div>
+                     </div>
+                     <div style="display: block!important;margin-top: -0.6em!important;">
+                        <h6 style="font-weight:bold!important;">Department</h6>                        
+                         <div style="margin-top: -0.7em!important;"><p id="depart" runat="server"></p></div>
+                     </div>
+                     <div style="display: block!important;margin-top: -0.6em!important;">
+                        <h6 style="font-weight:bold!important;">Title</h6>                        
+                         <div style="margin-top: -0.7em!important;"><p id="title" runat="server"></p></div>
+                     </div>
+                     <div style="display: block!important;margin-top: -0.6em!important;">
+                        <h6 style="font-weight:bold!important;">Position</h6>                        
+                         <div style="margin-top: -0.7em!important;"><p id="postion" runat="server"></p></div>                    
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row" style="margin-top: -1.9em!important;">
+               <div class="col-12">
+                  <h6 style="font-weight:bold!important;">Hired date</h6>                  
+                   <div style="margin-top: -0.7em!important;"><p runat="server" id="Hd"></p></div>  
+               </div>
+            </div>
+            <div class="row"  style="margin-top: -0.7em!important;">
+               <div class="col-12">
+                  <h6 style="font-weight:bold!important;">Direct Report</h6>                 
+                   <div style="margin-top: -0.7em!important;"> <p runat="server" id="manager" style="font-size:0.9em!important;"></p></div>  
+               </div>
+            </div>
+         </aside>
+         <asp:ContentPlaceHolder ID="Main1" runat="server">                        
+         </asp:ContentPlaceHolder>
+         <!-- /.content-wrapper -->
+         <footer class="main-footer">
+            <div class="container">
+               <div class="pull-right hidden-xs">
+               </div>
+               <center>
+                  <strong>
+                     &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script>
+                     <a href="https://zamaragroup.com/" target="_blank">Zamara</a> | All Rights Reserved.
+                  </strong>
+               </center>
+            </div>
+            <!-- /.container -->
+         </footer>
+         <!-- ./wrapper -->
+         <!-- jQuery -->
+         <!-- ./wrapper -->
+         <!-- jQuery -->
+         <script src="~/plugins/jquery/jquery.min.js"></script>
+         <!-- jQuery UI 1.11.4 -->
+         <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+         <script>
+             $.widget.bridge('uibutton', $.ui.button)
+         </script>
+         <!-- Bootstrap 4 -->
+         <script src="../wwwroot/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+         <script src="../wwwroot/plugins/bootstrap/js/bootstrap.min.js"></script>
+         <!-- ChartJS -->
+         <script src="../wwwroot/plugins/chart.js/Chart.min.js"></script>
+         <!-- Sparkline -->
+         <script src="../wwwroot/plugins/sparklines/sparkline.js"></script>
+         <!-- JQVMap -->
+         <script src="../wwwroot/plugins/jqvmap/jquery.vmap.min.js"></script>
+         <script src="../wwwroot/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+         <!-- jQuery Knob Chart -->
+         <script src="../wwwroot/plugins/jquery-knob/jquery.knob.min.js"></script>
+         <!-- daterangepicker -->
+         <script src="../wwwroot/plugins/moment/moment.min.js"></script>
+         <script src="../wwwroot/plugins/daterangepicker/daterangepicker.js"></script>
+         <!-- Tempusdominus Bootstrap 4 -->
+         <script src="../wwwroot/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+         <!-- Summernote -->
+         <script src="../wwwroot/plugins/summernote/summernote-bs4.min.js"></script>
+         <!-- overlayScrollbars -->
+         <script src="../wwwroot/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+         <!-- AdminLTE App -->
+         <script src="../wwwroot/dist/js/adminlte.js"></script>
+         <!-- AdminLTE for demo purposes -->
+         <script src="../wwwroot/dist/js/demo.js"></script>
+         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+         <script src="../wwwroot/dist/js/pages/dashboard.js"></script>
+         <script src="../wwwroot/js/site.js"></script>
+         <!-- Select2 -->
+         <script src="../bower_components/select2/dist/js/select2.full.min.js"></script>
+         <!-- DataTables -->
+         <%-- <script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+            <script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>--%>
+         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+         <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+         <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
+         <script src="https://cdn.datatables.net/searchpanes/2.1.1/js/dataTables.searchPanes.min.js"></script>
+         <script src="https://cdn.datatables.net/searchpanes/2.1.1/js/searchPanes.bootstrap5.min.js"></script>
+         <script src="https://cdn.datatables.net/select/1.6.1/js/dataTables.select.min.js"></script>
+         <script>
+            $.widget.bridge('uibutton', $.ui.button)
+            $(function () {
+                var table = $('#example1').DataTable({
+                    searchPanes: false
+                });
+                table.searchPanes.container().prependTo(table.table().container());
+                table.searchPanes.resizePanes();
+            });
+         </script>
+         <script> 
+             $(document).ready(function () {
+
+                 $(function () {
+                     //Initialize Select2 Elements
+                     $('.select2').select2()
+
+                     //Datemask dd/mm/yyyy
+                     $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+                     //Datemask2 mm/dd/yyyy
+                     $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+                     //Money Euro
+                     $('[data-mask]').inputmask()
+
+                     //Date range picker
+                     $('#reservation').daterangepicker()
+                     //Date range picker with time picker
+                     $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' } })
+                     //Date range as a button
+                     $('#daterange-btn').daterangepicker(
+                         {
+                             ranges: {
+                                 'Today': [moment(), moment()],
+                                 'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                                 'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                                 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                                 'This Month': [moment().startOf('month'), moment().endOf('month')],
+                                 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                             },
+                             startDate: moment().subtract(29, 'days'),
+                             endDate: moment()
+                         },
+                         function (start, end) {
+                             $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+                         }
+                     )
+
+                     //Date picker
+                     $('#datepicker').datepicker({
+                         autoclose: true
+                     })
+
+                     //iCheck for checkbox and radio inputs
+                     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                         checkboxClass: 'icheckbox_minimal-blue',
+                         radioClass: 'iradio_minimal-blue'
+                     })
+                     //Red color scheme for iCheck
+                     $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                         checkboxClass: 'icheckbox_minimal-red',
+                         radioClass: 'iradio_minimal-red'
+                     })
+                     //Flat red color scheme for iCheck
+                     $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                         checkboxClass: 'icheckbox_flat-green',
+                         radioClass: 'iradio_flat-green'
+                     })
+
+                     //Colorpicker
+                     $('.my-colorpicker1').colorpicker()
+                     //color picker with addon
+                     $('.my-colorpicker2').colorpicker()
+
+                     //Timepicker
+                     $('.timepicker').timepicker({
+                         showInputs: false
+                     })
+                 })
+                 //change image size on scroll
+                 $(window).scroll(function () {
+                     if ($(this).scrollTop() > 50) {
+                         $('.employee-nav').addClass('navbar-fixed');
+                         $('.employee-nav').addClass('scrolled');
+                         $('.main-sidebar').addClass('scrolled-up');
+                     } else {
+                         $('.employee-nav').removeClass('navbar-fixed');
+                         $('.employee-nav').removeClass('scrolled');
+                         $('.main-sidebar').removeClass('scrolled-up');
+                     }
+                 });
+
+                 //Mark the active navbar
+
+                 // Get the current URL path
+                 var path = window.location.href.toLowerCase();
+
+                 // Function to set the active class
+                 function setActiveClass(element) {
+                     // Remove active class from all nav-items
+                     $('.nav-item').removeClass('active');
+                     // Add active class to the parent nav-item
+                     $(element).closest('.nav-item').addClass('active');
+                 }
+
+                 // Check if the path matches any of the dropdown items
+                 $('.dropdown-item').each(function () {
+                     if (path.includes(this.href.toLowerCase())) {
+                         setActiveClass(this);
+                     }
+                 });
+
+                 // Check if the path matches any of the main nav links
+                 $('.nav-link').each(function () {
+                     if (path.includes(this.href.toLowerCase()) && !$(this).hasClass('dropdown-toggle')) {
+                         setActiveClass(this);
+                     }
+                 });
+
+
+                 $('.dropdown').hover(function () {
+                     $(this).addClass('show');
+                     $(this).find('.dropdown-menu').addClass('show');
+                 }, function () {
+                     $(this).removeClass('show');
+                     $(this).find('.dropdown-menu').removeClass('show');
+                 });
+                 function updateTable(rowsShown) {
+                     var rowsTotal = $('#example1 tbody tr').length;
+                     var numPages = Math.ceil(rowsTotal / rowsShown);
+
+                     $('.pagination').html('');
+                     for (var i = 0; i < numPages; i++) {
+                         var pageNum = i + 1;
+                         $('.pagination').append('<li class="page-item"><a class="page-link" href="#" rel="' + i + '">' + pageNum + '</a></li>');
+                     }
+                     $('#example1 tbody tr').hide();
+                     $('#example1 tbody tr').slice(0, rowsShown).show();
+                     $('.pagination li:nth-child(1)').addClass('active');
+
+                     $('.pagination li a').bind('click', function () {
+                         $('.pagination li').removeClass('active');
+                         $(this).parent().addClass('active');
+                         var currPage = $(this).attr('rel');
+                         var startItem = currPage * rowsShown;
+                         var endItem = startItem + rowsShown;
+                         $('#example1 tbody tr').hide().slice(startItem, endItem).show();
+                     });
+                 }
+
+                 $('#recordsPerPage').on('change', function () {
+                     var rowsShown = parseInt($(this).val());
+                     updateTable(rowsShown);
+                 });
+
+                 $("#searchInput").on("keyup", function () {
+                     var value = $(this).val().toLowerCase();
+                     $("#example1 tbody tr").filter(function () {
+                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                     });
+                     updatePaginationAfterSearch();
+                 });
+
+                 function updatePaginationAfterSearch() {
+                     var rowsShown = parseInt($('#recordsPerPage').val());
+                     var visibleRows = $('#example1 tbody tr:visible');
+                     var rowsTotal = visibleRows.length;
+                     var numPages = Math.ceil(rowsTotal / rowsShown);
+
+                     $('.pagination').html('');
+                     for (var i = 0; i < numPages; i++) {
+                         var pageNum = i + 1;
+                         $('.pagination').append('<li class="page-item"><a class="page-link" href="#" rel="' + i + '">' + pageNum + '</a></li>');
+                     }
+                     visibleRows.hide();
+                     visibleRows.slice(0, rowsShown).show();
+                     $('.pagination li:nth-child(1)').addClass('active');
+
+                     $('.pagination li a').bind('click', function () {
+                         $('.pagination li').removeClass('active');
+                         $(this).parent().addClass('active');
+                         var currPage = $(this).attr('rel');
+                         var startItem = currPage * rowsShown;
+                         var endItem = startItem + rowsShown;
+                         visibleRows.hide().slice(startItem, endItem).show();
+                     });
+                 }
+
+                 // Initial load
+                 var initialRowsShown = parseInt($('#recordsPerPage').val());
+                 updateTable(initialRowsShown);
+
+
+
+
+
+
+
+                 //birthday navgation
+                 var itemsPerPage = 2;
+                 var $employeeCardsContainer = $('#employee-cards-container');
+                 var $employeeCards = $employeeCardsContainer.children('.employee-card');
+                 var totalPages = Math.ceil($employeeCards.length / itemsPerPage);
+
+                 function showPage(page) {
+                     $employeeCards.hide();
+                     var start = (page - 1) * itemsPerPage;
+                     var end = start + itemsPerPage;
+                     $employeeCards.slice(start, end).show();
+                 }
+
+                 function createPagination() {
+                     var $pagination = $('.pagination');
+                     $pagination.empty();
+                     for (var i = 1; i <= totalPages; i++) {
+                         var $pageItem = $('<li class="page-item"><a class="page-link" href="#">' + i + '</a></li>');
+                         $pagination.append($pageItem);
+                     }
+                     $pagination.find('a').on('click', function (e) {
+                         e.preventDefault();
+                         var page = $(this).text();
+                         showPage(page);
+                         $pagination.find('.page-item').removeClass('active');
+                         $(this).parent().addClass('active');
+                     });
+                 }
+
+                 createPagination();
+                 showPage(1);
+                 $('.pagination').find('li').first().addClass('active');
+
+
+             })
+         </script>
+      </form>
+   </body>
+</html>

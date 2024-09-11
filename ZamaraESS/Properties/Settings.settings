@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ZamaraESS.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ZamaraESS_FinService_finservice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://afken1bcuatapp1.zamara.co.ke:7047/UAT/WS/ZAAC/Codeunit/finservice</Value>
+    </Setting>
+    <Setting Name="ZamaraESS_ProcService_procservice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://afken1bcuatapp1.zamara.co.ke:7047/UAT/WS/ZAAC/Codeunit/procservice</Value>
+    </Setting>
+    <Setting Name="ZamaraESS_HrService_hrservice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://afken1bcuatapp1.zamara.co.ke:7047/UAT/WS/ZAAC/Codeunit/hrservice</Value>
+    </Setting>
+    <Setting Name="ZamaraESS_ProcServiceZarib_procservice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://afken1bcprodapp1.zamara.co.ke:7107/ZamaraHF/WS/ZARIB/Codeunit/procservice</Value>
+    </Setting>
+    <Setting Name="ZamaraESS_FinServiceZarib_finservice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://afken1bcprodapp1.zamara.co.ke:7107/ZamaraHF/WS/ZARIB/Codeunit/finservice</Value>
+    </Setting>
+    <Setting Name="ZamaraESS_HrServiceZarib_hrservice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://afken1bcprodapp1.zamara.co.ke:7107/ZamaraHF/WS/ZARIB/Codeunit/hrservice</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
